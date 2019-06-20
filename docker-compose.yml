@@ -1,15 +1,22 @@
 version: '3.0'
 services:
   fluentd:
-    image: fluent/fluentd:v1.5.1-1.0
+    build: ./fluentd
     ports:
       - 8888:8888
     volumes:
       - ./fluentd:/fluentd/etc
       - ./data:/fluentd/data
+    links:
+      - elasticsearch
     command: -c /fluentd/etc/heimdall.conf
   # fluentui:
   #   image: dvladnik/fluentd-ui
   #   ports:
   #     - 9292:9292
   #     - 24224:24224
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+networks:
+  internal:
+    driver: bridge
