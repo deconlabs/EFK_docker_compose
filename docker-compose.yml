@@ -8,8 +8,8 @@ services:
       - ./fluentd:/fluentd/etc
       - ./data:/fluentd/data
     command: -c /fluentd/etc/heimdall.conf
-  fluentui:
-    image: dvladnik/fluentd-ui
-    ports:
-      - 9292:9292
-      - 24224:24224
+  # fluentui:
+  #   image: dvladnik/fluentd-ui
+  #   ports:
+  #     - 9292:9292
+  #     - 24224:24224
